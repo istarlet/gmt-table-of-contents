@@ -1,5 +1,5 @@
 // Get the DOM elements
-let toc = document.querySelector("#table-of-contents");
+let toc = document.querySelector("[data-toc]");
 let headings = document.querySelectorAll("h2");
 
 /**
@@ -25,8 +25,11 @@ for (let heading of headings) {
 
 // If there's content, render it into the UI
 if (html) {
-  toc.innerHTML = `<p><strong>Table of Contents</strong></p>
-                <ol>
-                    ${html}
-                </ol>`;
+  let title = toc.getAttribute("data-toc");
+  toc.innerHTML = `<p><strong>${
+    title ? title : "Table of Contents"
+  }</strong></p>
+        <ol>
+          ${html}
+        </ol>`;
 }
